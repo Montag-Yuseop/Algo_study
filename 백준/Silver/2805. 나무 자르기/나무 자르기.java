@@ -1,51 +1,53 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int n,m;
-	static int[] tree;
-	static int max=0;
-	public static void main(String[] args) throws IOException{
+	// 나무의 수 N개
+	// 가져가야 할 나무의 길이 M
+	// 나무의 높이 입력
+	
+	public static void main(String[] args) throws IOException {
+		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
-		n = Integer.parseInt(st.nextToken()); //나무 수
-		m = Integer.parseInt(st.nextToken()); // 가져가려는 나무 길이.
+		int N = Integer.parseInt(st.nextToken());
+		int M = Integer.parseInt(st.nextToken());
 		
-		tree = new int[n]; // 나무 높이의 합 >= m
 		st = new StringTokenizer(br.readLine());
+		int[] tree = new int[N];
 		
-		for(int i = 0 ; i < n ; i ++) {
+		// 나무 배열 입력
+		for(int i = 0; i < N; i++) {
 			tree[i] = Integer.parseInt(st.nextToken());
-			max = max < tree[i] ? tree[i] : max ;
 		}
+		// 나무 정렬하기
+		Arrays.sort(tree);
 		
-		System.out.println(binarySearch());
-	}
-	private static int binarySearch() {
+		int start = 0;
+		int end =  tree[N-1];
 		
-		int left = 0 ;
-		int right = max;
-		
-		while(left <= right) {
-			int mid = (left + right) / 2;	
-			
-			long length = 0 ;
-			
-			for(int i = 0 ; i < tree.length ; i++) {
-				if(tree[i] - mid > 0 ) {
-					length += (tree[i] -mid);
+		while(start<=end) {
+			int mid = (start+end) / 2;
+			long sum = 0;
+			for(int i = 0; i<tree.length; i++) {
+				if(tree[i] >= mid) {
+					sum += (tree[i]-mid);
 				}
 			}
-			if (m <= length) {
-				left = mid + 1;
-            }
-            else{// m > count 
-            	right = mid - 1;
-            }
+			
+			if(sum < M) {
+				end = mid - 1; 
+			} else {
+				start = mid + 1;
+			}
+			
 		}
 		
-		return left-1;
+		System.out.println(end);
+		
 	}
+
 }
