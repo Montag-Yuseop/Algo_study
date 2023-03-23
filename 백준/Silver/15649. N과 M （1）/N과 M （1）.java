@@ -10,7 +10,7 @@ public class Main {
 	public static int[] arr;
 	public static boolean[] visit; // 방문배열
 	public static int[] result; // 방문배열
-
+	static StringBuilder sb = new StringBuilder();
 	
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -29,15 +29,16 @@ public class Main {
 		
 		
 		perm(0);
+		System.out.println(sb);
 		
 	}
 
 	private static void perm(int idx) {
 		if(idx == M) {
 			for(int i = 0; i<M; i++) {
-				System.out.print(result[i]+" ");
+				sb.append(result[i]+" ");
 			}
-			System.out.println();
+			sb.append("\n");
 			return;
 		}
 		
