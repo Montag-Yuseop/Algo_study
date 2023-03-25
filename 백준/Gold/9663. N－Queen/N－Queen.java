@@ -37,11 +37,9 @@ public class Main {
 
 	private static boolean possible(int cnt) {
 		for(int i = 0; i<cnt; i++) {
-			if(map[i] == map[cnt]) {
+			if(map[i] == map[cnt] || Math.abs(cnt-i) == Math.abs(map[cnt]-map[i])) {
 				return false;
-			} else if(Math.abs(cnt-i) == Math.abs(map[cnt]-map[i])) {
-				return false;
-			}
+			} 
 		}
 		return true;
 	}
