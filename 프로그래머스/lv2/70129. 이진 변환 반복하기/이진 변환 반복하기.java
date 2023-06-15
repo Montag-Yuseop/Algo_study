@@ -6,17 +6,10 @@ class Solution {
         int transBinary = 0;
         
         while(!s.equals("1")) {
-            
+            int temp = s.length();
             transBinary++;
-            boolean check = false;
-            for(int i = 0; i < s.length(); i++) {
-                if(s.charAt(i) == '0') {
-                    removeZero++;
-                    check = true;
-                }
-            }
-            s = s.replace("0", "");
-            
+            s = s.replaceAll("0", "");
+            removeZero += (temp - s.length());  
             s = Integer.toBinaryString(s.length());
         }
         
