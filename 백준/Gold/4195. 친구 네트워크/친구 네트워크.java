@@ -64,6 +64,7 @@ public class Main {
     public static void union(int a, int b) {
         a = find(parent[a]);
         b = find(parent[b]);
+        if(a == b) return;
         if(a != b) {
             parent[b] = a;
             count[a] += count[b];
