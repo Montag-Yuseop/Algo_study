@@ -16,6 +16,7 @@ public class Main {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
+        StringBuilder sb= new StringBuilder();
         int T = Integer.parseInt(br.readLine());
 
         for(int tc = 1; tc <= T; tc++) {
@@ -52,11 +53,12 @@ public class Main {
 
                 int min = Math.min(map.get(a), map.get(b));
 //                System.out.println(min);
-                System.out.println(count[find(min)]);
+                sb.append(count[find(min)]+"\n");
 
             }
 
         }
+        System.out.println(sb);
 
     }
     public static void union(int a, int b) {
