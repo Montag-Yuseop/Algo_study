@@ -68,8 +68,7 @@ public class Main {
         // left와 right의 값이 같을 경우에도 진행을 함 해줘야 하기 떄문에 
         while(left <= right) {
             int mid = (left + right) / 2;
-            // 방문 배열 생성 - > 반복마다 초기화
-            visited = new boolean[N+1];
+
             // 방문배열이 참 일 경우 > 방문배열 안에는 현재 내가 이분탐색한 중량의 중간값 저장
             if(bfs(mid)) {
                 // 미드 값을 넣고 탐색했을 때, 중량이 초과가 안나면? 우측으로 이동하고
@@ -88,7 +87,8 @@ public class Main {
     public static boolean bfs(int mid) {
         // 큐 생성
         Queue<Node> q = new LinkedList<>();
-
+    // 방문 배열 생성 - > 반복마다 초기화
+        visited = new boolean[N+1];
         visited[start] = true; // 시작점 방문처리
         q.offer(new Node(start, 0)); // 시작점은 중량값 없음, bfs탐색 시작
 
