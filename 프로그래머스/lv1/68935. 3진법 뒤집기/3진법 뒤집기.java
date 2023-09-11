@@ -11,10 +11,12 @@ class Solution {
         }
         
         
-        for(int i = 0; i < s.length(); i++) {
-            answer += Math.pow(3,i)*(s.charAt(s.length()-i-1)-'0');
-            System.out.println(answer);
-        }
+        // for(int i = 0; i < s.length(); i++) {
+        //     answer += Math.pow(3,i)*(s.charAt(s.length()-i-1)-'0');
+        //     System.out.println(answer);
+        // }
+        
+        answer = Integer.parseInt(s, 3);
         
         return answer;
     }
