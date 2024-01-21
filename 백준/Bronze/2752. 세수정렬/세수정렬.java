@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -11,18 +12,16 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int[] answer = new int[3];
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
 
         for (int i = 0; i < 3; i++) {
             int x = Integer.parseInt(st.nextToken());
-
-            answer[i] = x;
+            pq.offer(x);
         }
 
-        Arrays.sort(answer);
-
         for (int i = 0; i < 3; i++) {
-            System.out.print(answer[i] + " ");
+            int x = pq.poll();
+            System.out.print(x +" ");
         }
 
     }
