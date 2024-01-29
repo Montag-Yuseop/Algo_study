@@ -1,49 +1,54 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.ListIterator;
- 
+
 public class Main {
-    static LinkedList<Character> lnklist;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
         
-        int TC = Integer.parseInt(br.readLine());
-        for(int i = 0; i < TC; i++) {
-            lnklist = new LinkedList<>();
-            ListIterator<Character> list = lnklist.listIterator();
-            String str = br.readLine();
-            
-            for(int j = 0; j < str.length(); j++) {
-                char c = str.charAt(j);
+        // 테스트 케이스의 수
+        int N = Integer.parseInt(br.readLine());
+        
+        for(int tc = 0; tc < N; tc++) {
+            String s = br.readLine();
+            LinkedList<Character> password = new LinkedList<>();
+            ListIterator<Character> iter = password.listIterator();
+
+            for(int i = 0; i < s.length(); i++) {
+                char c = s.charAt(i);
+                
                 switch(c) {
                     case '<' :
-                        if(list.hasPrevious()) {
-                            list.previous();
+                        if(iter.hasPrevious()) {
+                            iter.previous();
                         }
                         break;
                     case '>' :
-                        if(list.hasNext()) {
-                            list.next();
+                        if(iter.hasNext()) {
+                            iter.next();
                         }
                         break;
                     case '-' :
-                        if(list.hasPrevious()) {
-                            list.previous();
-                            list.remove();
+                        if(iter.hasPrevious()) {
+                            iter.previous();
+                            iter.remove();
                         }
                         break;
-                    default : 
-                        list.add(c);
+                    default:
+                        iter.add(c);
                 }
             }
-            
-            StringBuilder sb = new StringBuilder();
-            for(char s : lnklist) {
-                sb.append(s);
+
+            for (char c : password) {
+                sb.append(c);
             }
-            System.out.println(sb.toString());
+            sb.append("\n");
         }
+        System.out.println(sb);
     }
 }
