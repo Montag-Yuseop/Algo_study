@@ -1,0 +1,13 @@
+SELECT
+    DR_NAME,
+    DR_ID,
+    MCDP_CD,
+    DATE_FORMAT(HIRE_YMD, '%Y-%m-%d') HIRE_YMD
+FROM
+    DOCTOR
+WHERE
+    MCDP_CD like 'CS' OR
+    MCDP_CD like 'GS'
+ORDER BY
+    HIRE_YMD DESC,
+    DR_NAME ASC
