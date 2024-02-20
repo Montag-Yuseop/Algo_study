@@ -1,0 +1,6 @@
+-- FOOD_PRODUCT 테이블
+-- 전체 출력(가장 가격이 비싼)
+SELECT *
+FROM FOOD_PRODUCT
+ORDER BY PRICE DESC
+LIMIT 1;
