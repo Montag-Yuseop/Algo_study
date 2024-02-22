@@ -1,0 +1,13 @@
+-- 경기도 위치한
+-- 창고 ID, 이름, 주소, 냉동시설 여부 NULL이면 N으로 출력
+SELECT
+    WAREHOUSE_ID,
+    WAREHOUSE_NAME,
+    ADDRESS,
+    IFNULL(FREEZER_YN, 'N') FREEZER_YN
+FROM FOOD_WAREHOUSE
+WHERE
+    ADDRESS LIKE '%경기도%'
+ORDER BY
+    WAREHOUSE_ID
+;
