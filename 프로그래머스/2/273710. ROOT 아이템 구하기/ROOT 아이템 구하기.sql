@@ -1,0 +1,14 @@
+-- 코드를 작성해주세요
+SELECT 
+    a.ITEM_ID,
+    a.ITEM_NAME
+FROM
+    ITEM_INFO AS a
+WHERE
+    a.ITEM_ID IN
+    (SELECT b.ITEM_ID
+    FROM ITEM_TREE AS b
+    WHERE b.PARENT_ITEM_ID IS NULL)
+ORDER BY
+    a.ITEM_ID
+;
