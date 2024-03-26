@@ -22,13 +22,14 @@ class Solution {
         int[] answer = new int[2];
         maxCnt = 0;
 
-        map = new int[picture.length][picture[0].length];
+//         map = new int[picture.length][picture[0].length];
 
-        for(int r = 0; r < map.length; r++) {
-            for(int c = 0; c < map[0].length; c++) {
-                map[r][c] = picture[r][c]; 
-            }
-        }
+//         for(int r = 0; r < map.length; r++) {
+//             for(int c = 0; c < map[0].length; c++) {
+//                 map[r][c] = picture[r][c]; 
+//             }
+//         }
+        map = picture;
 
 
         int v = 0;
