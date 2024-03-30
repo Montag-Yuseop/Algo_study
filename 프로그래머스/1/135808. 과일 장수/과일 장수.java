@@ -12,15 +12,7 @@ class Solution {
             
             answer += (score[idx] * m);
             idx -= 1;
-                
-            
-            
-            
-            
-            
-            
-        }
-        
+        }  
         
         return answer;
     }
