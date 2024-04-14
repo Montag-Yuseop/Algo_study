@@ -18,8 +18,9 @@ class Solution {
                 nowIdx++;
             }
             
-            move = Math.min(move, (i * 2) + name.length() - nowIdx);
-            move = Math.min(move, (name.length() - nowIdx) * 2 + i);
+            move = Math.min(
+                Math.min(move, (name.length() - nowIdx) * 2 + i), 
+                            (i * 2) + name.length() - nowIdx);
         }
         answer += move;
         
