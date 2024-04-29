@@ -38,12 +38,7 @@ class Solution {
     }
     
     static void dfs(char[] total, String select, int now, int depth, int idx) {
-        if(now == depth) {
-            if(select.equals("CB")) {
-                System.out.println(now +" "+depth+" "+idx);
-                System.out.println(Arrays.toString(visited));
-            }   
-            
+        if(now == depth) {  
             map[depth].put(select, map[depth].getOrDefault(select, 0) + 1);
             max[depth] = Math.max(max[depth], map[depth].getOrDefault(select, 0));
             return;
