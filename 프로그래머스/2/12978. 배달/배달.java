@@ -2,12 +2,17 @@ import java.util.*;
 
 class Solution {
     
-    static class Node {
+    static class Node implements Comparable<Node> {
         int v, cost;
         
         public Node(int v, int cost) {
             this.v = v;
             this.cost = cost;
+        }
+        
+        public int compareTo(Node o) {
+            if(this.cost <= o.cost) return -1;
+            return 1;
         }
     }
     
@@ -58,7 +63,8 @@ class Solution {
     }
     
     static void findOrder() {
-        PriorityQueue<Node> pq = new PriorityQueue<>((o1, o2) -> o1.cost - o2.cost);
+        // PriorityQueue<Node> pq = new PriorityQueue<>((o1, o2) -> o1.cost - o2.cost);
+        PriorityQueue<Node> pq = new PriorityQueue<>();
         pq.offer(new Node(1, 0)); // 시작 지점 입력
         dist[1] = 0; // 시작 지점 거리는 0으로 초기화
         visited[1] = true; // 시작지점 방문처리
