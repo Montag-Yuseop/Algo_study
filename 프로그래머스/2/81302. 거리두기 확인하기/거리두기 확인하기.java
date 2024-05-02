@@ -41,12 +41,6 @@ class Solution {
             // 맨해튼 거리가 true여도, 가운데 파티션으로 막혀있는지 체크해보기
             if(isFar(nowRoom, adj)) answer[idx++] = 1;
             else idx++;
-            
-            // for(char[] c : nowRoom) {
-            //     System.out.println(Arrays.toString(c));
-            // }
-            // System.out.println();
-            
         }
         
         
@@ -93,8 +87,6 @@ class Solution {
                             
                     }
                 }
-                
-                
             }
             
         }
