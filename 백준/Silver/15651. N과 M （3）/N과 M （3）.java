@@ -1,59 +1,43 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int[] arr;
-	static int[] result;
-	static boolean[] visited;
-	static int N;
-	static int M;
-	static StringBuilder sb = new StringBuilder();
-	
-	public static void main(String[] args) throws IOException {
 
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st = new StringTokenizer(br.readLine());
+    static boolean[] visited;
+    static int[] arr;
+    static StringBuilder sb = new StringBuilder();
 
-		N = Integer.parseInt(st.nextToken());
-		M = Integer.parseInt(st.nextToken());
+    public static void main(String[] args) throws IOException {
 
-		arr = new int[N];
-		result = new int[M];
-		visited = new boolean[N];
-		
-		for(int i = 0; i < N; i++) {
-			arr[i] = i+1;
-		}
-		
-		perm(0);
-		System.out.println(sb);
-	}
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-	private static void perm(int idx) {
-		// 종료조건
-		if (idx == M) {
-			for(int i = 0; i<M; i++) {
-				sb.append(result[i]+" ");
-			}
-			sb.append("\n");
-			return;
-		}
+        int N = Integer.parseInt(st.nextToken());
+        int M = Integer.parseInt(st.nextToken());
+        visited = new boolean[N + 1];
+        arr = new int[M];
 
-		// 반복조건
-		for(int i = 0; i < N; i++) {
-			if(visited[i]) continue;
-			
-			result[idx] = arr[i];
-			
-			
-			perm(idx+1);
-			
-			
-		}
-		
-	}
+        dfs( 0, N, M);
+
+        System.out.println(sb);
+    }
+
+    static void dfs(int depth, int N, int M) {
+        if(depth == M) {
+            for(int i : arr) {
+                sb.append(i).append(" ");
+            }
+            sb.append("\n");
+            return;
+        }
+
+        for(int i = 1; i <= N; i++) {
+            arr[depth] = i;
+            dfs(depth+1, N, M);
+        }
+
+    }
 
 }
