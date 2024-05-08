@@ -1,57 +1,47 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
-	public static int N; // 1~N까지의 수
-	public static int M; // 중복 없이 M개를 고른 수열
-	public static int[] arr;
-	public static boolean[] visit; // 방문배열
-	public static int[] result; // 방문배열
-	static StringBuilder sb = new StringBuilder();
-	
-	public static void main(String[] args) throws IOException{
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st = new StringTokenizer(br.readLine());
-		
-		N = Integer.parseInt(st.nextToken()); // N개의 숫자
-		M = Integer.parseInt(st.nextToken()); // M개 고르기
-		
-		arr = new int[N];
-		result = new int[M];
-		visit = new boolean[N]; // 방문배열 초기화
-		
-		for(int i = 0; i<N; i++) {
-			arr[i] = i+1;
-		}
-		
-		
-		perm(0);
-		System.out.println(sb);
-		
-	}
 
-	private static void perm(int idx) {
-		if(idx == M) {
-			for(int i = 0; i<M; i++) {
-				sb.append(result[i]+" ");
-			}
-			sb.append("\n");
-			return;
-		}
-		
-		for(int i = 0; i<N; i++) {
-			if(visit[i]) continue;
-			
-			result[idx] = arr[i];
-			visit[i] = true;
-			
-			perm(idx+1);
-			visit[i] = false;
-			
-		}
-		
-	}
+    static StringBuilder sb = new StringBuilder();
+    static boolean[] visited;
+    static int[] arr;
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int N = Integer.parseInt(st.nextToken());
+        int M = Integer.parseInt(st.nextToken());
+
+        visited = new boolean[N + 1];
+        arr = new int[M];
+
+        dfs(0, M, N);
+
+        System.out.println(sb);
+    }
+
+    static void dfs(int depth, int M, int N) {
+        if(depth == M) {
+            for(int i : arr) {
+                sb.append(i).append(" ");
+            }
+            sb.append("\n");
+            return;
+        }
+
+        for(int i = 1; i <= N; i++) {
+            if(!visited[i]) {
+                visited[i] = true;
+                arr[depth] = i;
+                dfs(depth + 1, M, N);
+                visited[i] = false;
+            }
+
+        }
+
+    }
 }
