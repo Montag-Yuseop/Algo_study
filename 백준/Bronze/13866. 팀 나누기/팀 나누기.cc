@@ -1,17 +1,17 @@
-#include <iostream>
-#include <string>
-#include <algorithm>
-
-using std::string;
-using std::cin;
-using std::cout;
+#include <stdio.h>
+#pragma warning(disable:4996)
 
 int main() {
-	int A, B, C, D;
 
-	cin >> A >> B >> C >> D;
+	int A = 0, B = 0, C = 0, D = 0;
 
-	cout << abs((A + D) - (B + C));
+	scanf("%d %d %d %d", &A, &B, &C, &D);
+
+	int answer = (A + D) - (B + C);
+
+	if (answer < 0) answer *= -1;
+	
+	printf("%d", answer);
 
 	return 0;
 }
