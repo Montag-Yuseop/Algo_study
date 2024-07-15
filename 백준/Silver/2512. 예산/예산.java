@@ -49,8 +49,8 @@ public class Main {
         right = mid - 1;
       } else {
         left = mid + 1;
-        answer = Math.max(answer, mid);
       }
+      answer = right;
     }
 
     System.out.println(answer);
